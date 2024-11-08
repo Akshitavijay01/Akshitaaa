@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Elite Occasions - Luxury Event Planning</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B4891D;
+            --light-gold: #FFE5B4;
+            --dark-blue: #0a1928;
+            --white: #ffffff;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a1928, #1c2f3e);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .navigation {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .navigation a {
+            color: var(--gold);
+            text-decoration: none;
+            padding: 12px 28px;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.5px;
+        }
+
+        .navigation a:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--light-gold), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 60px 0;
+            padding: 0 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: titleFade 1s ease-in-out;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .checklist-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h2 {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: var(--light-gold);
+            font-size: 1.2rem;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            margin-right: 15px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .custom-checkbox.checked {
+            background: var(--gold);
+        }
+
+        .custom-checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            color: var(--dark-blue);
+            font-size: 16px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .tips-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            margin: 60px 0;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .tip-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tip-card h4 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .navigation {
+                padding: 10px;
+            }
+
+            .navigation a {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+
+        @keyframes titleFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+   <div class="logo-container">
+        <img class="logo" src="logo.jpg" alt="Elite Occasions Logo" style="max-width: 100%; height: auto;">
+    </div>
+
+    <div class="navigation">
+        <a href="index.html">Home</a>
+        <a href="about1.html">About</a>
+        <a href="checklist1.html">Checklist</a>
+    </div>
+    <div class="container">
+        <h1 class="main-title">Elite Occasions Event Planning</h1>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+        </div>
+
+        <div class="checklist-container">
+            <div class="section">
+                <h2>Initial Planning</h2>
+                <h3>2-3 Months Before</h3>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Define event vision and goals</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Establish budget and timeline</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Research and book venue</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Create guest list</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Vendor Selection</h2>
+                <h3>6-8 Weeks Before</h3>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Book catering service</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Arrange entertainment</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Order decorations</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Hire photographer</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Final Preparations</h2>
+                <h3>1-2 Weeks Before</h3>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Confirm all vendors</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Create detailed timeline</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Prepare welcome packages</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="custom-checkbox"></div>
+                    <span>Final guest count</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tips-section">
+            <h2>Professional Event Planning Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>Budgeting Wisely</h4>
+                    <p>Always include a 10-15% buffer in your budget for unexpected expenses. Prioritize spending on elements that create the most impact.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Timing is Everything</h4>
+                    <p>Schedule key moments around your guests' natural energy levels. Important presentations or speeches are best scheduled after meals.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Vendor Management</h4>
+                    <p>Maintain a detailed vendor contact sheet and timeline. Regular check-ins ensure everyone is aligned with your vision.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactivity to checkboxes
+        document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                checkbox.classList.toggle('checked');
+                updateProgress();
+            });
+        });
+
+        // Update progress bar
+        function updateProgress() {
+            const total = document.querySelectorAll('.custom-checkbox').length;
+            const checked = document.querySelectorAll('.custom-checkbox.checked').length;
+            const progress = (checked / total) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+    </script>
+</body>
+</html>

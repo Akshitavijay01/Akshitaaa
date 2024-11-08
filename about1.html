@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Elite Occasions - Luxury Event Planning</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B4891D;
+            --light-gold: #FFE5B4;
+            --dark-blue: #0a1928;
+            --darker-blue: #061018;
+            --white: #ffffff;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark-blue), var(--darker-blue));
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .navigation {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        vigation {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .navigation a {
+            color: var(--gold);
+            text-decoration: none;
+            padding: 12px 28px;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navigation a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .navigation a:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .navigation a:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--light-gold), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 60px 0;
+            padding: 0 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: titleFade 1s ease-in-out;
+        }
+
+        @keyframes titleFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 0 30px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeIn 1s ease-in-out;
+        }
+/* Enhanced Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 4rem auto;
+            padding: 2rem;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            border: 1px solid var(--gold);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Enhanced Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(10, 25, 40, 0.95), transparent);
+        }
+
+        /* Enhanced Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.2;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Enhanced CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 6rem auto;
+            padding: 6rem 2rem;
+            background: linear-gradient(rgba(10, 25, 40, 0.9), rgba(10, 25, 40, 0.9)),
+                        url('photos1/h.jpg') center/cover;
+            border-radius: 30px;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent, rgba(212, 175, 55, 0.1));
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, var(--dark-gold), var(--gold));
+            color: var(--dark-blue);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .stats-container,
+            .services-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img class="logo" src="logo.jpg" alt="Elite Occasions Logo">
+    </div>
+    
+    <nav class="navigation">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about1.html">About</a>
+            <a href="checklist1.html">Checklist</a>
+        </div>
+    </nav>
+
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="main-title">Elite Occasions</h1>
+            <div class="container">
+            <p class="intro-text">Crafting Extraordinary Moments with Unparalleled Elegance</p>
+    <main>
+        <h1 class="main-title">Luxury Event Management</h1>
+        <div class="container">
+        <p class="intro-text">
+            A refined and sophisticated name that evokes a sense of exclusivity and high-end event experiences.<br>
+            It suggests your event organizing site will offer exceptional, personalized services designed for clients seeking luxury and excellence.
+        </p>
+    </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Events Crafted</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">60+</div>
+                <div class="stat-label">Annual Clients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Cities Served</div>
+            </div>
+        </div>
+
+        <h2 class="main-title">Our Signature Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="w.jpg" alt="Luxury Weddings" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Luxury Weddings</h3>
+                    <p class="service-description">Creating timeless moments with meticulous attention to every detail.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="management.webp" alt="Corporate Events" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Corporate Events</h3>
+                    <p class="service-description">Elevating business gatherings with professional excellence.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="h.jpg" alt="Social Celebrations" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Social Celebrations</h3>
+                    <p class="service-description">Transforming special moments into unforgettable memories.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="main-title">Client Experiences</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="client-quote">Elite Occasions transformed our vision into reality. Every detail was executed with perfection.</p>
+                <p class="client-name">- Riya & Rahul</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="client-quote">Our corporate event was handled with exceptional professionalism and creativity.</p>
+                <p class="client-name">- Rajesh Kumar, CEO</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="client-quote">They made our daughter's wedding a fairy tale come true. Simply outstanding!</p>
+                <p class="client-name">- The Sharma Family</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">Begin Your Elite Journey</h2>
+            <a href="#" class="cta-button">Schedule a Consultation</a>
+        </div>
+    </main>
+</body>
+</html>
+        
